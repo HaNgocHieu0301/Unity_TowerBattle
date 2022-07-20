@@ -11,7 +11,8 @@ public class Monster : MonoBehaviour
     void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
-        speed = 7;
+        //speed = 7;
+        //để speed tạm thời cho ghost -> sau khi tao spawner thì xóa đi
     }
 
     // Update is called once per frame

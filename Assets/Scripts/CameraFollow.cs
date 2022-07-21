@@ -18,6 +18,12 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        //nếu nhân vật bị phá hủy hay k tồn tại thì return ngay
+        //có thể để là if(player) hay if(!player) 
+        if(player == null)
+        {
+            return;
+        }
         tempPos = transform.position; //vị trí hiện tại của máy ảnh x,y,z -> lưu trữ vị trí hiện tại của cam
         tempPos.x = player.position.x; //set x của cam = toa do x cua player
         if(tempPos.x < minX)

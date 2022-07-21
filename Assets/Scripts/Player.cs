@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
 
     private string WALK_ANIMATION = "walk";
     private string GROUND_TAG = "Ground";
+
+    private string ENEMY_TAG = "Enemy";
     private void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
@@ -83,5 +85,18 @@ public class Player : MonoBehaviour
         {
             isGround = true;
         }
+        //destroy nhân vật khi va chạm với monster
+        if (collision.gameObject.CompareTag(ENEMY_TAG))
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag(ENEMY_TAG)){
+            Destroy(gameObject);
+        }
+        //collider2D ở đây có thể sử dụng trực tiếp method CompareTag mà k cần qua gameObject
+        //khác với collision2D phải thông qua
     }
 }
